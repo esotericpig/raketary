@@ -1,0 +1,9 @@
+.env
+
+*.gem
+*.rbc
+
+/.yardoc/
+/doc/
+/pkg/
+/stock/
