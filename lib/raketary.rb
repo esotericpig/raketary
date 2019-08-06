@@ -21,6 +21,18 @@
 #++
 
 
+TESTING_RAKETARY = ($0 == __FILE__)
+
+if TESTING_RAKETARY
+  require 'rubygems'
+  require 'bundler/setup'
+end
+
+require 'raketary/app'
+require 'raketary/app_bump'
+require 'raketary/cmd'
+require 'raketary/errors'
+require 'raketary/sub_cmd'
 require 'raketary/version'
 
 ###
@@ -29,3 +41,5 @@ require 'raketary/version'
 ###
 module Raketary
 end
+
+Raketary::App.new().run() if TESTING_RAKETARY
