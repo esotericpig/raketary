@@ -85,7 +85,8 @@ module Raketary
         if !(sub_cmd = @sub_cmds[sub_cmd_name]).nil?()
           begin
             sub_cmd.cmd_class.new(app,sub_cmd_name).run()
-          rescue DoNotRunCmdError
+          rescue DoNotRunCmdError => e
+            app.soft_error = e.soft_msg
           end
         end
       end

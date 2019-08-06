@@ -21,6 +21,8 @@
 #++
 
 
+require 'raketary/app_bump'
+require 'raketary/app_nokogiri'
 require 'raketary/cmd'
 require 'raketary/sub_cmd'
 require 'raketary/version'
@@ -35,6 +37,7 @@ module Raketary
     attr_reader :options
     attr_reader :parsers
     attr_accessor :ran_cmd
+    attr_accessor :soft_error
     attr_reader :version
     
     alias_method :ran_cmd?,:ran_cmd
@@ -46,10 +49,12 @@ module Raketary
       @options = {}
       @parsers = []
       @ran_cmd = false
+      @soft_error = nil
       @version = Raketary::VERSION
       
       @sub_cmds = {
-        'bump' => SubCmd.new(%q(Bump your project's version),AppBump)
+        'bump' => SubCmd.new(%q(Bump your project's version),AppBump),
+        'nokogiri' => SubCmd.new('Install Nokogiri libs',AppNokogiri)
       }
       
       parse!(true) do |op|
@@ -63,7 +68,14 @@ module Raketary
     end
     
     def run()
-      puts @parsers.join() unless @ran_cmd
+      return if @ran_cmd
+      
+      puts @parsers.join()
+      
+      if !@soft_error.nil?()
+        puts
+        puts "ERROR: #{@soft_error}"
+      end
     end
   end
 end
