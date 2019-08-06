@@ -22,7 +22,7 @@
 
 
 require 'raketary/cmd'
-require 'raketeer'
+require 'raketeer/bump_task'
 
 module Raketary
   ###
