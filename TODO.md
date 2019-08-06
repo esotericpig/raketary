@@ -6,3 +6,10 @@
     - [ ] changelogs
     - [ ] ruby_files
     - [ ] ruby_var
+- [ ] Raketeer::IRBTask (`$ raketary irb`)
+    - [ ] main_module
+    - [ ] warning
+- [ ] Raketeer:RunTask (`$ raketary run`)
+    - [ ] bin_dir
+    - [ ] executable
+    - [ ] warning
