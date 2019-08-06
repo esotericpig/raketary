@@ -31,11 +31,13 @@ module Raketary
   ###
   class Cmd
     attr_reader :app
+    attr_reader :leftover_args
     attr_reader :name
     attr_reader :sub_cmds
     
     def initialize(app,name)
       @app = app
+      @leftover_args = []
       @name = name
       @sub_cmds = {}
     end
@@ -69,7 +71,7 @@ module Raketary
       end
       
       options = {}
-      parser.order!(app.args,into: options)
+      @leftover_args = parser.order!(app.args,into: options).dup()
       
       options.keys.each do |key|
         if (key_s = key.to_s()).include?('-')
