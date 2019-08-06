@@ -27,5 +27,12 @@ module Raketary
   # @since  0.1.0
   ###
   class DoNotRunCmdError < StandardError
+    attr_accessor :weak_msg
+    
+    def initialize(msg=nil)
+      super(msg)
+      
+      @weak_msg = msg
+    end
   end
 end
