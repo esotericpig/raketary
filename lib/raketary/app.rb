@@ -22,7 +22,9 @@
 
 
 require 'raketary/app_bump'
+require 'raketary/app_irb'
 require 'raketary/app_nokogiri'
+require 'raketary/app_run'
 require 'raketary/cmd'
 require 'raketary/sub_cmd'
 require 'raketary/version'
@@ -54,7 +56,9 @@ module Raketary
       
       @sub_cmds = {
         'bump' => SubCmd.new(%q(Bump your project's version),AppBump),
-        'nokogiri' => SubCmd.new('Install Nokogiri libs',AppNokogiri)
+        'irb' => SubCmd.new('Open an irb session loaded with your library',AppIRB),
+        'nokogiri' => SubCmd.new('Install Nokogiri libs',AppNokogiri),
+        'run' => SubCmd.new(%Q(Run your project's main file: #{@name} run -- --version),AppRun)
       }
       
       parse!(true) do |op|

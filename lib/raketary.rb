@@ -30,6 +30,9 @@ end
 
 require 'raketary/app'
 require 'raketary/app_bump'
+require 'raketary/app_irb'
+require 'raketary/app_nokogiri'
+require 'raketary/app_run'
 require 'raketary/cmd'
 require 'raketary/errors'
 require 'raketary/sub_cmd'
