@@ -22,3 +22,7 @@
 
 
 require 'raketary'
+
+app = Raketary::App.new()
+
+app.run()
