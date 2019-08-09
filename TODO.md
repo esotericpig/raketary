@@ -13,3 +13,4 @@
     - [ ] bin_dir
     - [ ] executable
     - [ ] warning
+- [ ] Add aliases or fuzzy search for sub commands
