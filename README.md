@@ -10,12 +10,12 @@ CLI for [Raketeer](https://github.com/esotericpig/raketeer).
 
 ## Contents
 
-- [Install](#install)
+- [Installing](#installing)
 - [Using](#using)
 - [Hacking](#hacking)
 - [License](#license)
 
-## [Install](#contents)
+## [Installing](#contents)
 
 Pick your poison...
 
