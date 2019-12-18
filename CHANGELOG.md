@@ -2,7 +2,11 @@
 
 Format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [[Unreleased]](https://github.com/esotericpig/raketary/compare/v0.1.0...master)
+## [[Unreleased]](https://github.com/esotericpig/raketary/compare/v0.1.1...master)
+
+## [v0.1.1] - 2019-12-18
+### Changed
+- Add more info to CHANGELOG, README, TODO
 
 ## [v0.1.0] - 2019-08-06
 ### Added
