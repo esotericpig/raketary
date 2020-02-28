@@ -9,12 +9,14 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    irb (1.2.0)
+    io-console (0.5.6)
+    irb (1.2.3)
       reline (>= 0.0.1)
     rake (12.3.3)
     raketeer (0.2.7)
       rake
-    reline (0.0.7)
+    reline (0.1.3)
+      io-console (~> 0.5)
 
 PLATFORMS
   ruby
@@ -24,4 +26,4 @@ DEPENDENCIES
   raketary!
 
 BUNDLED WITH
-   2.0.2
+   2.1.2
