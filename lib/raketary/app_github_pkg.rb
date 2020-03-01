@@ -21,6 +21,8 @@
 #++
 
 
+require 'bundler/gem_tasks'
+
 require 'rake'
 require 'raketary/cmd'
 require 'raketeer/github_pkg_task'
