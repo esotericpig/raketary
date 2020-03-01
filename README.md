@@ -8,7 +8,7 @@
 
 CLI for [Raketeer](https://github.com/esotericpig/raketeer).
 
-![Demo of Raketary on the command line](pics/demo.gif)
+![Demo of Raketary on the command line](https://github.com/esotericpig/raketary/releases/download/v0.1.1/demo.gif)
 
 ## Contents
 
