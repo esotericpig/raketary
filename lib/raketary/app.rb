@@ -4,7 +4,7 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019 Jonathan Bradley Whited (@esotericpig)
+# Copyright (c) 2019-2020 Jonathan Bradley Whited (@esotericpig)
 # 
 # Raketary is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -22,12 +22,14 @@
 
 
 require 'raketary/app_bump'
+require 'raketary/app_github_pkg'
 require 'raketary/app_irb'
 require 'raketary/app_nokogiri'
 require 'raketary/app_run'
 require 'raketary/cmd'
 require 'raketary/sub_cmd'
 require 'raketary/version'
+
 
 module Raketary
   ###
@@ -56,6 +58,7 @@ module Raketary
       
       @sub_cmds = {
         'bump' => SubCmd.new(%q(Bump your project's version),AppBump),
+        'github_pkg' => SubCmd.new(%q(Publish your project's gem(s) to GitHub Packages),AppGitHubPkg),
         'irb' => SubCmd.new('Open an irb session loaded with your library',AppIRB),
         'nokogiri' => SubCmd.new('Install Nokogiri libs',AppNokogiri),
         'run' => SubCmd.new(%Q(Run your project's main file: #{@name} run -- --version),AppRun)
