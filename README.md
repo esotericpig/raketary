@@ -116,6 +116,7 @@ $ raketary github_pkg -h
 
 ```
 $ git clone 'https://github.com/esotericpig/raketary.git'
+$ cd raketary
 $ bundle install
 $ bundle exec rake -T
 ```
