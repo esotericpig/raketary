@@ -112,8 +112,6 @@ module Raketary
       
       bump_task.check_env()
       
-      bump_task.bump_bundle_file() if app.options[:bundle]
-      
       bump_task.bump_all(Raketeer::BumpVer.new(
         version: app.options[:ver],
         major: app.options[:major],
@@ -122,6 +120,8 @@ module Raketary
         prerelease: app.options[:pre],
         build_meta: app.options[:build]
       ))
+      
+      bump_task.bump_bundle_file() if app.options[:bundle]
       
       app.ran_cmd = true
     end
