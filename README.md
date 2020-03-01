@@ -44,6 +44,7 @@ Usage: raketary [options] [command] [options]...
 
 Commands:
     bump                             Bump your project's version
+    github_pkg                       Publish your project's gem(s) to GitHub Packages
     irb                              Open an irb session loaded with your library
     nokogiri                         Install Nokogiri libs
     run                              Run your project's main file: raketary run -- --version
@@ -101,6 +102,16 @@ raketary bump -b 'beta.5'   # Set the build metadata
 raketary bump -u            # Bump the Gemfile.lock version
 ```
 
+**GitHub Pkg**
+
+```
+$ raketary github_pkg -h
+...
+[github_pkg] Options:
+    -u, --user [STR]                 set the GitHub username
+    -h, --help                       show this help
+```
+
 ## [Hacking](#contents)
 
 ```
@@ -114,7 +125,7 @@ $ bundle exec rake -T
 [GNU LGPL v3+](LICENSE.txt)
 
 > Raketary (<https://github.com/esotericpig/raketary>)  
-> Copyright (c) 2019 Jonathan Bradley Whited (@esotericpig)  
+> Copyright (c) 2019-2020 Jonathan Bradley Whited (@esotericpig)  
 > 
 > Raketary is free software: you can redistribute it and/or modify  
 > it under the terms of the GNU Lesser General Public License as published by  
