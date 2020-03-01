@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    raketary (0.1.1)
+    raketary (0.1.2)
       irb (~> 1.0)
       rake (~> 12.3)
       raketeer (~> 0.2)
