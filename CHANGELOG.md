@@ -2,7 +2,11 @@
 
 Format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [[Unreleased]](https://github.com/esotericpig/raketary/compare/v0.1.2...master)
+## [[Unreleased]](https://github.com/esotericpig/raketary/compare/v0.1.3...master)
+
+## [v0.1.3] - 2020-03-02
+### Changed
+- Changed AppGitHubPkg logic to not check if username is nil (minor; not a bug)
 
 ## [v0.1.2] - 2020-03-01
 ### Added
