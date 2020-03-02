@@ -46,7 +46,7 @@ module Raketary
       super()
       
       ghpkg_task = Raketeer::GitHubPkgTask.new() do |task|
-        task.username = app.options[:user] if app.options[:user]
+        task.username = app.options[:user]
       end
       
       ghpkg_task = Rake::Task[ghpkg_task.name]
