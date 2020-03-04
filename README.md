@@ -6,7 +6,12 @@
 [![Changelog](https://img.shields.io/badge/changelog-md-%23A0522D.svg?style=for-the-badge)](CHANGELOG.md)
 [![License](https://img.shields.io/github/license/esotericpig/raketary.svg?color=%23A0522D&style=for-the-badge)](LICENSE.txt)
 
-CLI for [Raketeer](https://github.com/esotericpig/raketeer).
+CLI app for commonly-used Rake tasks.
+
+Includes:
+
+- [Raketeer](https://github.com/esotericpig/raketeer)
+- [YardGhurt](https://github.com/esotericpig/yard_ghurt)
 
 ![Demo of Raketary on the command line](https://github.com/esotericpig/esotericpig.github.io/blob/master/pics/raketary_demo.gif)
 
@@ -36,14 +41,13 @@ $ bundle exec rake install:local
 
 ## [Using](#contents)
 
-**TODO:** flesh out Using section
-
 ```
 $ raketary
 Usage: raketary [options] [command] [options]...
 
 Commands:
     bump                             Bump your project's version
+    ghp_sync                         Sync YARDoc to GitHub Pages repo
     github_pkg                       Publish your project's gem(s) to GitHub Packages
     irb                              Open an irb session loaded with your library
     nokogiri                         Install Nokogiri libs
@@ -109,6 +113,19 @@ $ raketary github_pkg -h
 ...
 [github_pkg] Options:
     -u, --user [STR]                 set the GitHub username
+    -h, --help                       show this help
+```
+
+**GitHub Pages Sync**
+
+```
+$ raketary ghp_sync -h
+[ghp_sync] Options:
+    -g, --ghp-dir STR                the destination (GitHub Pages) directory to sync "doc/" to
+    
+    -d, --deploy                     actually deploy (don't just do a dry-run)
+    -s, --sync-args STR              additional args to pass to the sync command
+    
     -h, --help                       show this help
 ```
 
