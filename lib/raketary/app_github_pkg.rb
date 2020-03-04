@@ -4,7 +4,7 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019-2020 Jonathan Bradley Whited (@esotericpig)
+# Copyright (c) 2020 Jonathan Bradley Whited (@esotericpig)
 # 
 # Raketary is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -22,7 +22,6 @@
 
 
 require 'bundler/gem_tasks'
-
 require 'rake'
 require 'raketary/cmd'
 require 'raketeer/github_pkg_task'
@@ -39,6 +38,8 @@ module Raketary
       
       parse!() do |op|
         op.on('-u','--user [STR]','set the GitHub username')
+        
+        op.separator op.summary_indent
       end
     end
     
