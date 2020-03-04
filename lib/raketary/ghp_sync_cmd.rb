@@ -22,6 +22,7 @@
 
 
 require 'rake'
+require 'raketary/cmd'
 require 'shellwords'
 require 'yard_ghurt/ghp_sync_task'
 
