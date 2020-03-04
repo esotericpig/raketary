@@ -3,7 +3,7 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019 Jonathan Bradley Whited (@esotericpig)
+# Copyright (c) 2019-2020 Jonathan Bradley Whited (@esotericpig)
 # 
 # Raketary is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -23,9 +23,24 @@
 require 'bundler/gem_tasks'
 
 require 'rake/clean'
+require 'raketary/version'
 require 'raketeer/run'
+require 'yard'
+
 
 task default: [:run]
 
 CLEAN.exclude('.git/','stock/')
 CLOBBER.include('doc/')
+
+
+YARD::Rake::YardocTask.new() do |task|
+  task.files = [File.join('lib','**','*.rb')]
+  
+  task.options += ['--files','CHANGELOG.md,LICENSE.txt']
+  task.options += ['--readme','README.md']
+  
+  task.options << '--protected' # Show protected methods
+  #task.options += ['--template-path',File.join('yard','templates')]
+  task.options += ['--title',"Raketary v#{Raketary::VERSION} Doc"]
+end
