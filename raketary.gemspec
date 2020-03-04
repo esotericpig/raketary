@@ -3,7 +3,7 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019 Jonathan Bradley Whited (@esotericpig)
+# Copyright (c) 2019-2020 Jonathan Bradley Whited (@esotericpig)
 # 
 # Raketary is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -25,6 +25,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'raketary/version'
 
+
 Gem::Specification.new() do |spec|
   spec.name        = 'raketary'
   spec.version     = Raketary::VERSION
@@ -32,7 +33,7 @@ Gem::Specification.new() do |spec|
   spec.email       = ['bradley@esotericpig.com']
   spec.licenses    = ['LGPL-3.0-or-later']
   spec.homepage    = 'https://github.com/esotericpig/raketary'
-  spec.summary     = 'CLI for Raketeer.'
+  spec.summary     = 'CLI app for commonly-used Rake tasks.'
   spec.description = spec.summary
   
   spec.metadata = {
@@ -47,18 +48,19 @@ Gem::Specification.new() do |spec|
   spec.executables   = [spec.name]
   
   spec.files = Dir.glob(File.join("{#{spec.require_paths.join(',')}}",'**','*.{erb,rb}')) +
-               Dir.glob(File.join(spec.bindir,'**',"{#{spec.executables.join(',')}}")) +
+               Dir.glob(File.join(spec.bindir,'*')) +
                Dir.glob(File.join('{test,yard}','**','*.{erb,rb}')) +
                %W( Gemfile Gemfile.lock #{spec.name}.gemspec Rakefile ) +
                %w( CHANGELOG.md LICENSE.txt README.md )
   
   spec.post_install_message = "You can now use [#{spec.executables.join(', ')}] on the command line."
   
-  spec.required_ruby_version = '>= 2.4.6'
+  spec.required_ruby_version = '>= 2.4'
   
-  spec.add_runtime_dependency 'irb'     ,'~> 1.0'  # For Raketeer::IRBTask
-  spec.add_runtime_dependency 'rake'    ,'~> 12.3' # For Raketeer
-  spec.add_runtime_dependency 'raketeer','~> 0.2'
+  spec.add_runtime_dependency 'rake'      ,'~> 13.0' # For using custom Rake tasks
+  spec.add_runtime_dependency 'raketeer'  ,'~> 0.2'  # For general Rake tasks
+  spec.add_runtime_dependency 'yard_ghurt','~> 1.2'  # For YARDoc Rake tasks
   
   spec.add_development_dependency 'bundler','~> 2.0'
+  spec.add_development_dependency 'yard'   ,'~> 0.9' # For documentation
 end
