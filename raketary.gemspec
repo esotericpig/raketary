@@ -55,6 +55,7 @@ Gem::Specification.new() do |spec|
   
   spec.required_ruby_version = '>= 2.4'
   
+  spec.add_runtime_dependency 'irb'       ,'~> 1.2'  # For Raketeer::IRBTask
   spec.add_runtime_dependency 'rake'      ,'~> 13.0' # For using custom Rake tasks
   spec.add_runtime_dependency 'raketeer'  ,'~> 0.2'  # For general Rake tasks
   spec.add_runtime_dependency 'yard_ghurt','~> 1.2'  # For YARDoc Rake tasks
