@@ -4,7 +4,7 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019 Jonathan Bradley Whited (@esotericpig)
+# Copyright (c) 2019-2020 Jonathan Bradley Whited (@esotericpig)
 # 
 # Raketary is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -29,14 +29,17 @@ if TESTING_RAKETARY
 end
 
 require 'raketary/app'
-require 'raketary/app_bump'
-require 'raketary/app_irb'
-require 'raketary/app_nokogiri'
-require 'raketary/app_run'
+require 'raketary/bump_cmd'
 require 'raketary/cmd'
 require 'raketary/errors'
+require 'raketary/ghp_sync_cmd'
+require 'raketary/github_pkg_cmd'
+require 'raketary/irb_cmd'
+require 'raketary/nokogiri_cmd'
+require 'raketary/run_cmd'
 require 'raketary/sub_cmd'
 require 'raketary/version'
+
 
 ###
 # @author Jonathan Bradley Whited (@esotericpig)

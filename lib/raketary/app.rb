@@ -21,12 +21,13 @@
 #++
 
 
-require 'raketary/app_bump'
-require 'raketary/app_github_pkg'
-require 'raketary/app_irb'
-require 'raketary/app_nokogiri'
-require 'raketary/app_run'
+require 'raketary/bump_cmd'
 require 'raketary/cmd'
+require 'raketary/ghp_sync_cmd'
+require 'raketary/github_pkg_cmd'
+require 'raketary/irb_cmd'
+require 'raketary/nokogiri_cmd'
+require 'raketary/run_cmd'
 require 'raketary/sub_cmd'
 require 'raketary/version'
 
@@ -57,11 +58,12 @@ module Raketary
       @version = Raketary::VERSION
       
       @sub_cmds = {
-        'bump' => SubCmd.new(%q(Bump your project's version),AppBump),
-        'github_pkg' => SubCmd.new(%q(Publish your project's gem(s) to GitHub Packages),AppGitHubPkg),
-        'irb' => SubCmd.new('Open an irb session loaded with your library',AppIRB),
-        'nokogiri' => SubCmd.new('Install Nokogiri libs',AppNokogiri),
-        'run' => SubCmd.new(%Q(Run your project's main file: #{@name} run -- --version),AppRun)
+        'bump' => SubCmd.new(%q(Bump your project's version),BumpCmd),
+        'ghp_sync' => SubCmd.new('Sync YARDoc to GitHub Pages repo',GHPSyncCmd),
+        'github_pkg' => SubCmd.new(%q(Publish your project's gem(s) to GitHub Packages),GitHubPkgCmd),
+        'irb' => SubCmd.new('Open an irb session loaded with your library',IRBCmd),
+        'nokogiri' => SubCmd.new('Install Nokogiri libs',NokogiriCmd),
+        'run' => SubCmd.new(%Q(Run your project's main file: #{@name} run -- --version),RunCmd)
       }
       
       parse!(true) do |op|

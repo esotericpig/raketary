@@ -4,7 +4,7 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019 Jonathan Bradley Whited (@esotericpig)
+# Copyright (c) 2019-2020 Jonathan Bradley Whited (@esotericpig)
 # 
 # Raketary is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -24,12 +24,13 @@
 require 'raketary/cmd'
 require 'raketeer/bump_task'
 
+
 module Raketary
   ###
   # @author Jonathan Bradley Whited (@esotericpig)
   # @since  0.1.0
   ###
-  class AppBump < Cmd
+  class BumpCmd < Cmd
     def initialize(*)
       super
       
@@ -38,6 +39,7 @@ module Raketary
       parse!() do |op|
         op.on('-n','--dry-run','do a dry run (do NOT write to files)')
         op.on('-s','--strict','enforce semantic versioning (i.e., \\d+\\.\\d+\\.\\d+.*)')
+        
         op.separator op.summary_indent
         
         op.on('-v','--ver [STR]',%q{show/set the version (e.g.: '1.2.3-alpha.4+beta.5') (default: show)}) do |ver|
@@ -68,6 +70,7 @@ module Raketary
           @run_cmd = true
           true
         end
+        
         op.separator op.summary_indent
         
         op.on_tail('-x','--example','show some examples') do
@@ -105,10 +108,11 @@ module Raketary
       super()
       return unless @run_cmd
       
-      bump_task = Raketeer::BumpTask.new()
-      bump_task.bump_bundle = false
-      bump_task.dry_run = app.options[:dry_run] ? true : false
-      bump_task.strict = app.options[:strict] ? true : false
+      bump_task = Raketeer::BumpTask.new() do |task|
+        task.bump_bundle = false
+        task.dry_run = app.options[:dry_run] ? true : false
+        task.strict = app.options[:strict] ? true : false
+      end
       
       bump_task.check_env()
       

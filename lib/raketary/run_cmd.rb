@@ -4,7 +4,7 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019 Jonathan Bradley Whited (@esotericpig)
+# Copyright (c) 2019-2020 Jonathan Bradley Whited (@esotericpig)
 # 
 # Raketary is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -25,12 +25,13 @@ require 'rake'
 require 'raketary/cmd'
 require 'raketeer/run_task'
 
+
 module Raketary
   ###
   # @author Jonathan Bradley Whited (@esotericpig)
   # @since  0.1.0
   ###
-  class AppRun < Cmd
+  class RunCmd < Cmd
     def initialize(*)
       super
       

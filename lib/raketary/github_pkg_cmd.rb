@@ -32,12 +32,12 @@ module Raketary
   # @author Jonathan Bradley Whited (@esotericpig)
   # @since  0.1.2
   ###
-  class AppGitHubPkg < Cmd
+  class GitHubPkgCmd < Cmd
     def initialize(*)
       super
       
       parse!() do |op|
-        op.on('-u','--user [STR]','set the GitHub username')
+        op.on('-u','--user STR','set the GitHub username')
         
         op.separator op.summary_indent
       end
