@@ -120,6 +120,7 @@ $ raketary github_pkg -h
 
 ```
 $ raketary ghp_sync -h
+...
 [ghp_sync] Options:
     -g, --ghp-dir STR                the destination (GitHub Pages) directory to sync "doc/" to
     
