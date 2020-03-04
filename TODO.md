@@ -13,4 +13,5 @@
     - [ ] bin_dir
     - [ ] executable
     - [ ] warning
+- [ ] Change to use Commander for CLI instead of custom setup?
 - [ ] Add aliases or fuzzy search for sub commands
