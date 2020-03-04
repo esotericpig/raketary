@@ -2,7 +2,11 @@
 
 Format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [[Unreleased]](https://github.com/esotericpig/raketary/compare/v0.2.0...master)
+## [[Unreleased]](https://github.com/esotericpig/raketary/compare/v0.2.1...master)
+
+## [v0.2.1] - 2020-03-04
+### Fixed
+- Added back `irb` gem to Gemspec
 
 ## [v0.2.0] - 2020-03-04
 ### Added
