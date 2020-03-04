@@ -53,8 +53,6 @@ Gem::Specification.new() do |spec|
                %W( Gemfile Gemfile.lock #{spec.name}.gemspec Rakefile ) +
                %w( CHANGELOG.md LICENSE.txt README.md )
   
-  spec.post_install_message = "You can now use [#{spec.executables.join(', ')}] on the command line."
-  
   spec.required_ruby_version = '>= 2.4'
   
   spec.add_runtime_dependency 'rake'      ,'~> 13.0' # For using custom Rake tasks
@@ -63,4 +61,6 @@ Gem::Specification.new() do |spec|
   
   spec.add_development_dependency 'bundler','~> 2.0'
   spec.add_development_dependency 'yard'   ,'~> 0.9' # For documentation
+  
+  spec.post_install_message = "You can now use [#{spec.executables.join(', ')}] on the command line."
 end
