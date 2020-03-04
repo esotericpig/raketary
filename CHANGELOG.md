@@ -2,7 +2,17 @@
 
 Format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [[Unreleased]](https://github.com/esotericpig/raketary/compare/v0.1.3...master)
+## [[Unreleased]](https://github.com/esotericpig/raketary/compare/v0.2.0...master)
+
+## [v0.2.0] - 2020-03-04
+### Added
+- Added `GHPSyncCmd` for syncing YARDoc to GitHub Pages
+    - Calls `rsync` to sync `./doc/` to another local directory
+    - File: `lib/raketary/ghp_sync_cmd.rb`
+    - Sub cmd: `ghp_sync`
+
+### Changed
+- Renamed `App*` classes (`app_*.rb` files) to `*Cmd` (`*_cmd.rb`) since they extend `Cmd`, not `App`
 
 ## [v0.1.3] - 2020-03-02
 ### Changed
