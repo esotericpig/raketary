@@ -66,7 +66,7 @@ $ raketary bump
 [bump] Options:
     -n, --dry-run                    do a dry run (do NOT write to files)
     -s, --strict                     enforce semantic versioning (i.e., \d+\.\d+\.\d+.*)
-    
+
     -v, --ver [STR]                  show/set the version (e.g.: '1.2.3-alpha.4+beta.5') (default: show)
     -m, --major [INT,STR]            bump/set the major number (e.g.: +2, 4) (default: +1)
     -i, --minor [INT,STR]            bump/set the minor number (e.g.: +2, 4) (default: +1)
@@ -74,7 +74,7 @@ $ raketary bump
     -r, --pre [STR]                  set/erase the pre-release extension (e.g.: 'alpha.4') (default: erase)
     -b, --build [STR]                set/erase the the build metadata (e.g.: 'beta.5') (default: erase)
     -u, --bundle                     bump the Gemfile.lock version
-    
+
     -h, --help                       show this help
     -x, --example                    show some examples
 ```
@@ -123,10 +123,10 @@ $ raketary ghp_sync -h
 ...
 [ghp_sync] Options:
     -g, --ghp-dir STR                the destination (GitHub Pages) directory to sync "doc/" to
-    
+
     -d, --deploy                     actually deploy (don't just do a dry-run)
     -s, --sync-args STR              additional args to pass to the sync command
-    
+
     -h, --help                       show this help
 ```
 
@@ -144,7 +144,7 @@ $ bundle exec rake -T
 [GNU LGPL v3+](LICENSE.txt)
 
 > Raketary (<https://github.com/esotericpig/raketary>)  
-> Copyright (c) 2019-2020 Jonathan Bradley Whited (@esotericpig)  
+> Copyright (c) 2019-2021 Jonathan Bradley Whited  
 > 
 > Raketary is free software: you can redistribute it and/or modify  
 > it under the terms of the GNU Lesser General Public License as published by  

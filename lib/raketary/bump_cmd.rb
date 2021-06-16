@@ -4,20 +4,9 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019-2020 Jonathan Bradley Whited (@esotericpig)
-# 
-# Raketary is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-# 
-# Raketary is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Lesser General Public License for more details.
-# 
-# You should have received a copy of the GNU Lesser General Public License
-# along with Raketary.  If not, see <https://www.gnu.org/licenses/>.
+# Copyright (c) 2019-2021 Jonathan Bradley Whited
+#
+# SPDX-License-Identifier: LGPL-3.0-or-later
 #++
 
 
@@ -27,21 +16,21 @@ require 'raketeer/bump_task'
 
 module Raketary
   ###
-  # @author Jonathan Bradley Whited (@esotericpig)
+  # @author Jonathan Bradley Whited
   # @since  0.1.0
   ###
   class BumpCmd < Cmd
     def initialize(*)
       super
-      
+
       @run_cmd = false
-      
+
       parse!() do |op|
         op.on('-n','--dry-run','do a dry run (do NOT write to files)')
         op.on('-s','--strict','enforce semantic versioning (i.e., \\d+\\.\\d+\\.\\d+.*)')
-        
+
         op.separator op.summary_indent
-        
+
         op.on('-v','--ver [STR]',%q{show/set the version (e.g.: '1.2.3-alpha.4+beta.5') (default: show)}) do |ver|
           @run_cmd = true
           ver
@@ -70,20 +59,20 @@ module Raketary
           @run_cmd = true
           true
         end
-        
+
         op.separator op.summary_indent
-        
+
         op.on_tail('-x','--example','show some examples') do
           puts <<~EOX
             #{app.name} #{@name} -v  # Show the current version
             #{app.name} #{@name} -n  # Do a dry run for any task (will NOT write to files)
-            
+
             #{app.name} #{@name} -v '1.2.3-alpha.4-beta.5'  # Set the version manually
             #{app.name} #{@name} -m 1 -i 2 -p 3             # Set the version numbers
             #{app.name} #{@name} -r 'alpha.4' -b 'beta.5'   # Set the version extensions
             #{app.name} #{@name} -m -i -p                   # Bump the version numbers by 1
             #{app.name} #{@name} -m +2 -i +3 -p +4          # Bump the version numbers by X
-            
+
             #{app.name} #{@name} -m            # Bump the major number by 1
             #{app.name} #{@name} -m 1          # Set the major number to 1
             #{app.name} #{@name} -m +2         # Bump the major number by 2
@@ -103,19 +92,19 @@ module Raketary
         end
       end
     end
-    
+
     def run()
       super()
       return unless @run_cmd
-      
+
       bump_task = Raketeer::BumpTask.new() do |task|
         task.bump_bundle = false
         task.dry_run = app.options[:dry_run] ? true : false
         task.strict = app.options[:strict] ? true : false
       end
-      
+
       bump_task.check_env()
-      
+
       bump_task.bump_all(Raketeer::BumpVer.new(
         version: app.options[:ver],
         major: app.options[:major],
@@ -124,9 +113,9 @@ module Raketary
         prerelease: app.options[:pre],
         build_meta: app.options[:build]
       ))
-      
+
       bump_task.bump_bundle_file() if app.options[:bundle]
-      
+
       app.ran_cmd = true
     end
   end
