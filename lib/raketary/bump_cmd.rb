@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # encoding: UTF-8
 # frozen_string_literal: true
 
@@ -25,35 +24,38 @@ module Raketary
 
       @run_cmd = false
 
-      parse!() do |op|
+      parse! do |op|
         op.on('-n','--dry-run','do a dry run (do NOT write to files)')
         op.on('-s','--strict','enforce semantic versioning (i.e., \\d+\\.\\d+\\.\\d+.*)')
 
         op.separator op.summary_indent
 
-        op.on('-v','--ver [STR]',%q{show/set the version (e.g.: '1.2.3-alpha.4+beta.5') (default: show)}) do |ver|
+        op.on('-v','--ver [STR]',"show/set the version (e.g.: '1.2.3-alpha.4+beta.5')" \
+              ' (default: show)') do |ver|
           @run_cmd = true
           ver
         end
-        op.on('-m','--major [INT,STR]',%q{bump/set the major number (e.g.: +2, 4) (default: +1)}) do |major|
+        op.on('-m','--major [INT,STR]','bump/set the major number (e.g.: +2, 4) (default: +1)') do |major|
           @run_cmd = true
-          major.nil?() ? '+1' : major
+          major.nil? ? '+1' : major
         end
-        op.on('-i','--minor [INT,STR]',%q{bump/set the minor number (e.g.: +2, 4) (default: +1)}) do |minor|
+        op.on('-i','--minor [INT,STR]','bump/set the minor number (e.g.: +2, 4) (default: +1)') do |minor|
           @run_cmd = true
-          minor.nil?() ? '+1' : minor
+          minor.nil? ? '+1' : minor
         end
-        op.on('-p','--patch [INT,STR]',%q{bump/set the patch number (e.g.: +2, 4) (default: +1)}) do |patch|
+        op.on('-p','--patch [INT,STR]','bump/set the patch number (e.g.: +2, 4) (default: +1)') do |patch|
           @run_cmd = true
-          patch.nil?() ? '+1' : patch
+          patch.nil? ? '+1' : patch
         end
-        op.on('-r','--pre [STR]',%q{set/erase the pre-release extension (e.g.: 'alpha.4') (default: erase)}) do |pre|
+        op.on('-r','--pre [STR]',"set/erase the pre-release extension (e.g.: 'alpha.4')" \
+              ' (default: erase)') do |pre|
           @run_cmd = true
-          pre.nil?() ? '' : pre
+          pre.nil? ? '' : pre
         end
-        op.on('-b','--build [STR]',%q{set/erase the the build metadata (e.g.: 'beta.5') (default: erase)}) do |build|
+        op.on('-b','--build [STR]',"set/erase the the build metadata (e.g.: 'beta.5')" \
+              ' (default: erase)') do |build|
           @run_cmd = true
-          build.nil?() ? '' : build
+          build.nil? ? '' : build
         end
         op.on('-u','--bundle','bump the Gemfile.lock version') do
           @run_cmd = true
@@ -63,7 +65,7 @@ module Raketary
         op.separator op.summary_indent
 
         op.on_tail('-x','--example','show some examples') do
-          puts <<~EOX
+          puts <<~EXAMPLES
             #{app.name} #{@name} -v  # Show the current version
             #{app.name} #{@name} -n  # Do a dry run for any task (will NOT write to files)
 
@@ -87,23 +89,23 @@ module Raketary
             #{app.name} #{@name} -b            # Erase the build metadata
             #{app.name} #{@name} -b 'beta.5'   # Set the build metadata
             #{app.name} #{@name} -u            # Bump the Gemfile.lock version
-          EOX
+          EXAMPLES
           exit
         end
       end
     end
 
-    def run()
+    def run
       super()
       return unless @run_cmd
 
-      bump_task = Raketeer::BumpTask.new() do |task|
+      bump_task = Raketeer::BumpTask.new do |task|
         task.bump_bundle = false
         task.dry_run = app.options[:dry_run] ? true : false
         task.strict = app.options[:strict] ? true : false
       end
 
-      bump_task.check_env()
+      bump_task.check_env
 
       bump_task.bump_all(Raketeer::BumpVer.new(
         version: app.options[:ver],
@@ -114,7 +116,7 @@ module Raketary
         build_meta: app.options[:build]
       ))
 
-      bump_task.bump_bundle_file() if app.options[:bundle]
+      bump_task.bump_bundle_file if app.options[:bundle]
 
       app.ran_cmd = true
     end

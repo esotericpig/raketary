@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # encoding: UTF-8
 # frozen_string_literal: true
 
@@ -24,19 +23,19 @@ module Raketary
     def initialize(*)
       super
 
-      parse!() do |op|
+      parse! do |op|
         #op.separator op.summary_indent
       end
     end
 
-    def run()
+    def run
       super()
 
-      irb_task = Raketeer::IRBTask.new()
+      irb_task = Raketeer::IRBTask.new
       irb_task = Rake::Task[irb_task.name]
 
-      irb_task.reenable()
-      irb_task.invoke()
+      irb_task.reenable
+      irb_task.invoke
 
       app.ran_cmd = true
     end

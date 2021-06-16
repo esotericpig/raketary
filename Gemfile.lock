@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     raketary (0.2.1)
-      irb (~> 1.2)
+      irb (~> 1.3)
       rake (~> 13.0)
       raketeer (~> 0.2)
       yard_ghurt (~> 1.2)
@@ -10,25 +10,26 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    io-console (0.5.6)
-    irb (1.2.3)
-      reline (>= 0.0.1)
-    rake (13.0.1)
-    raketeer (0.2.9)
+    io-console (0.5.9)
+    irb (1.3.5)
+      reline (>= 0.1.5)
+    rake (13.0.3)
+    raketeer (0.2.11)
       rake
-    reline (0.1.3)
+    reline (0.2.5)
       io-console (~> 0.5)
-    yard (0.9.24)
-    yard_ghurt (1.2.0)
+    yard (0.9.26)
+    yard_ghurt (1.2.1)
       rake
+      yard
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.0)
+  bundler (~> 2.2)
   raketary!
   yard (~> 0.9)
 
 BUNDLED WITH
-   2.1.2
+   2.2.20

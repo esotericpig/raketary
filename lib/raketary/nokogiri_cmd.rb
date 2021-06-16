@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # encoding: UTF-8
 # frozen_string_literal: true
 
@@ -26,7 +25,7 @@ module Raketary
 
       @main_opts = 0
 
-      parse!() do |op|
+      parse! do |op|
         op.on('-a','--apt','install Nokogiri libs for Ubuntu/Debian') do
           @main_opts += 1
           true
@@ -43,7 +42,7 @@ module Raketary
       end
     end
 
-    def run()
+    def run
       super()
       return if @main_opts <= 0
 
@@ -54,14 +53,14 @@ module Raketary
       install_task = nil
 
       if app.options[:apt]
-        install_task = Raketeer::NokogiriAPTTask.new()
+        install_task = Raketeer::NokogiriAPTTask.new
       elsif app.options[:dnf]
-        install_task = Raketeer::NokogiriDNFTask.new()
+        install_task = Raketeer::NokogiriDNFTask.new
       elsif app.options[:other]
-        install_task = Raketeer::NokogiriOtherTask.new()
+        install_task = Raketeer::NokogiriOtherTask.new
       end
 
-      if !install_task.nil?()
+      if !install_task.nil?
         install_task.run(install_task,nil)
 
         app.ran_cmd = true

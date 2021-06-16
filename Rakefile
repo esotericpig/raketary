@@ -16,7 +16,7 @@ CLEAN.exclude('.git/','stock/')
 CLOBBER.include('doc/')
 
 
-YARD::Rake::YardocTask.new() do |task|
+YARD::Rake::YardocTask.new do |task|
   task.files = [File.join('lib','**','*.rb')]
 
   task.options += ['--files','CHANGELOG.md,LICENSE.txt']

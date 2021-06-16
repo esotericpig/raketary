@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # encoding: UTF-8
 # frozen_string_literal: true
 
@@ -10,7 +9,7 @@
 #++
 
 
-TESTING_RAKETARY = ($0 == __FILE__)
+TESTING_RAKETARY = ($PROGRAM_NAME == __FILE__)
 
 if TESTING_RAKETARY
   require 'rubygems'
@@ -37,4 +36,4 @@ require 'raketary/version'
 module Raketary
 end
 
-Raketary::App.new().run() if TESTING_RAKETARY
+Raketary::App.new.run if TESTING_RAKETARY

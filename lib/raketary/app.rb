@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # encoding: UTF-8
 # frozen_string_literal: true
 
@@ -47,12 +46,12 @@ module Raketary
       @version = Raketary::VERSION
 
       @sub_cmds = {
-        'bump' => SubCmd.new(%q(Bump your project's version),BumpCmd),
+        'bump' => SubCmd.new("Bump your project's version",BumpCmd),
         'ghp_sync' => SubCmd.new('Sync YARDoc to GitHub Pages repo',GHPSyncCmd),
-        'github_pkg' => SubCmd.new(%q(Publish your project's gem(s) to GitHub Packages),GitHubPkgCmd),
+        'github_pkg' => SubCmd.new("Publish your project's gem(s) to GitHub Packages",GitHubPkgCmd),
         'irb' => SubCmd.new('Open an irb session loaded with your library',IRBCmd),
         'nokogiri' => SubCmd.new('Install Nokogiri libs',NokogiriCmd),
-        'run' => SubCmd.new(%Q(Run your project's main file: #{@name} run -- --version),RunCmd)
+        'run' => SubCmd.new("Run your project's main file: #{@name} run -- --version",RunCmd)
       }
 
       parse!(true) do |op|
@@ -65,12 +64,12 @@ module Raketary
       end
     end
 
-    def run()
+    def run
       return if @ran_cmd
 
-      puts @parsers.join()
+      puts @parsers.join
 
-      if !@soft_error.nil?()
+      if !@soft_error.nil?
         puts
         puts "ERROR: #{@soft_error}"
       end

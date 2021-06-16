@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # encoding: UTF-8
 # frozen_string_literal: true
 
@@ -25,24 +24,24 @@ module Raketary
     def initialize(*)
       super
 
-      parse!() do |op|
+      parse! do |op|
         op.on('-u','--user STR','set the GitHub username')
 
         op.separator op.summary_indent
       end
     end
 
-    def run()
+    def run
       super()
 
-      ghpkg_task = Raketeer::GitHubPkgTask.new() do |task|
+      ghpkg_task = Raketeer::GitHubPkgTask.new do |task|
         task.username = app.options[:user]
       end
 
       ghpkg_task = Rake::Task[ghpkg_task.name]
 
-      ghpkg_task.reenable()
-      ghpkg_task.invoke()
+      ghpkg_task.reenable
+      ghpkg_task.invoke
 
       app.ran_cmd = true
     end

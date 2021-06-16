@@ -12,6 +12,6 @@
 
 require 'raketary'
 
-app = Raketary::App.new()
+app = Raketary::App.new
 
-app.run()
+app.run
