@@ -14,7 +14,7 @@ GEM
     irb (1.3.5)
       reline (>= 0.1.5)
     rake (13.0.3)
-    raketeer (0.2.11)
+    raketeer (0.2.12)
       rake
     reline (0.2.5)
       io-console (~> 0.5)
