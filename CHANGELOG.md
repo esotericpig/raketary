@@ -5,13 +5,18 @@ All notable changes to this project will be documented in this file.
 Format is based on [Keep a Changelog v1.0.0](https://keepachangelog.com/en/1.0.0),
 and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [[Unreleased]](https://github.com/esotericpig/raketary/compare/v0.2.3...HEAD)
+## [[Unreleased]](https://github.com/esotericpig/raketary/compare/v0.2.4...HEAD)
 -
+
+
+## [v0.2.4] - 2021-06-22
+### Changed
+- Updated raketeer Gem for `bump` command.
 
 
 ## [v0.2.3] - 2021-06-18
 ### Changed
-- Updated raketeer gem.
+- Updated raketeer Gem.
 
 
 ## [v0.2.2] - 2021-06-16
