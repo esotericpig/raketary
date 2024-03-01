@@ -18,7 +18,7 @@ GEM
       rake
     reline (0.2.6)
       io-console (~> 0.5)
-    yard (0.9.26)
+    yard (0.9.36)
     yard_ghurt (1.2.1)
       rake
       yard
