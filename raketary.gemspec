@@ -37,12 +37,12 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.4'
 
-  spec.add_runtime_dependency 'irb'       ,'~> 1.3'  # For Raketeer::IRBTask
-  spec.add_runtime_dependency 'rake'      ,'~> 13.0' # For using custom Rake tasks
+  spec.add_runtime_dependency 'irb'       ,'~> 1.14' # For Raketeer::IRBTask
+  spec.add_runtime_dependency 'rake'      ,'~> 13.2' # For using custom Rake tasks
   spec.add_runtime_dependency 'raketeer'  ,'~> 0.2'  # For general Rake tasks
   spec.add_runtime_dependency 'yard_ghurt','~> 1.2'  # For YARDoc Rake tasks
 
-  spec.add_development_dependency 'bundler','~> 2.2'
+  spec.add_development_dependency 'bundler','~> 2.5'
   spec.add_development_dependency 'yard'   ,'~> 0.9' # For documentation
 
   spec.post_install_message = "You can now use [#{spec.executables.join(', ')}] on the command line."
