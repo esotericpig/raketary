@@ -31,7 +31,7 @@ Pick your poison...
 With the RubyGems CLI package manager:
 
 ```bash
-$ gem install raketary
+gem install raketary
 ```
 
 From source:
@@ -66,7 +66,6 @@ Options:
 
 ```bash
 $ raketary bump
-...
 [bump] Options:
     -n, --dry-run                    do a dry run (do NOT write to files)
     -s, --strict                     enforce semantic versioning (i.e., \d+\.\d+\.\d+.*)
@@ -114,7 +113,6 @@ raketary bump -u            # Bump the Gemfile.lock version
 
 ```bash
 $ raketary github_pkg -h
-...
 [github_pkg] Options:
     -u, --user [STR]                 set the GitHub username
     -h, --help                       show this help
@@ -124,7 +122,6 @@ $ raketary github_pkg -h
 
 ```bash
 $ raketary ghp_sync -h
-...
 [ghp_sync] Options:
     -g, --ghp-dir STR                the destination (GitHub Pages) directory to sync "doc/" to
 
@@ -137,10 +134,10 @@ $ raketary ghp_sync -h
 ## [//](#-contents) Hacking
 
 ```bash
-$ git clone 'https://github.com/esotericpig/raketary.git'
-$ cd raketary
-$ bundle install
-$ bundle exec rake -T
+git clone 'https://github.com/esotericpig/raketary.git'
+cd raketary
+bundle install
+bundle exec rake -T
 ```
 
 ## [//](#-contents) License
