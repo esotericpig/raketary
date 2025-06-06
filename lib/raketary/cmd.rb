@@ -3,57 +3,46 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019-2021 Jonathan Bradley Whited
+# Copyright (c) 2019 Bradley Whited
 #
 # SPDX-License-Identifier: LGPL-3.0-or-later
 #++
 
-
 require 'optparse'
 require 'raketary/errors'
 
-
 module Raketary
-  ###
-  # @author Jonathan Bradley Whited
-  # @since  0.1.0
-  ###
   class Cmd
     attr_reader :app
-    attr_reader :leftover_args
     attr_reader :name
     attr_reader :sub_cmds
+    attr_reader :leftover_args
 
     def initialize(app,name)
       @app = app
-      @leftover_args = []
       @name = name
       @sub_cmds = {}
+      @leftover_args = []
     end
 
-    def parse!(is_app=false)
+    def parse!(is_app = false)
       parser = OptionParser.new do |op|
         op.program_name = app.name
         op.version = app.version
 
         op.banner = ''
-        op.separator '' if is_app
+        op.separator('') if is_app
 
         if !@sub_cmds.empty?
-          op.separator is_app ? 'Commands:' : "[#{@name}] Commands:"
+          op.separator(is_app ? 'Commands:' : "[#{@name}] Commands:")
 
           @sub_cmds.each do |name,sub_cmd|
-            name_desc = ''.dup
-            name_desc << op.summary_indent
-            name_desc << ("%-#{op.summary_width}s #{sub_cmd.desc}" % [name])
-
-            op.separator name_desc
+            op.separator("#{op.summary_indent}#{format("%-#{op.summary_width}s #{sub_cmd.desc}",name)}")
           end
-          op.separator ''
+          op.separator('')
         end
 
-        op.separator is_app ? 'Options:' : "[#{@name}] Options:"
-
+        op.separator(is_app ? 'Options:' : "[#{@name}] Options:")
         op.on_tail('-h','--help','show this help')
 
         yield op
@@ -62,9 +51,10 @@ module Raketary
       options = {}
       @leftover_args = parser.order!(app.args,into: options).dup
 
-      options.each_key do |key|
+      # NOTE: Can't use each_key(), since we modify the hash in the loop.
+      options.keys.each do |key|
         if (key_s = key.to_s).include?('-')
-          options[key_s.gsub('-','_').to_sym] = options[key]
+          options[key_s.tr('-','_').to_sym] = options[key]
           options.delete(key)
         end
       end
@@ -72,13 +62,13 @@ module Raketary
 
       app.parsers << parser
 
-      if !app.args.nil? && !(sub_cmd_name = app.args.shift).nil?
-        if !(sub_cmd = @sub_cmds[sub_cmd_name]).nil?
-          begin
-            sub_cmd.cmd_class.new(app,sub_cmd_name).run
-          rescue DoNotRunCmdError => e
-            app.soft_error = e.soft_msg
-          end
+      if !app.args.nil? &&
+         !(sub_cmd_name = app.args.shift).nil? &&
+         !(sub_cmd = @sub_cmds[sub_cmd_name]).nil?
+        begin
+          sub_cmd.cmd_class.new(app,sub_cmd_name).run
+        rescue DoNotRunCmdError => e
+          app.soft_error = e.soft_msg
         end
       end
 

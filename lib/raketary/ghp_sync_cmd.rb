@@ -3,23 +3,17 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2020-2021 Jonathan Bradley Whited
+# Copyright (c) 2020 Bradley Whited
 #
 # SPDX-License-Identifier: LGPL-3.0-or-later
 #++
-
 
 require 'rake'
 require 'raketary/cmd'
 require 'shellwords'
 require 'yard_ghurt/ghp_sync_task'
 
-
 module Raketary
-  ###
-  # @author Jonathan Bradley Whited
-  # @since  0.2.0
-  ###
   class GHPSyncCmd < Cmd
     def initialize(*)
       super
@@ -28,8 +22,8 @@ module Raketary
       app.args.each_with_index do |arg,i|
         arg = arg.strip
 
-        if arg == '-s' || arg.downcase == '--sync-args'
-          sync_args = app.args[i + 1] # If out of bounds, nil
+        if arg == '-s' || arg.casecmp?('--sync-args')
+          sync_args = app.args[i + 1] # If out of bounds, nil.
 
           if !sync_args.nil?
             sync_args = Shellwords.split(sync_args)
@@ -38,8 +32,9 @@ module Raketary
             app.options[:sync_args] = sync_args
           end
 
+          # NOTE: This is safe only because we break immediately after.
           app.args.delete_at(i)
-          app.args.delete_at(i) # If out of bounds, no error
+          app.args.delete_at(i) # If out of bounds, no error.
 
           break
         end
@@ -48,19 +43,19 @@ module Raketary
       parse! do |op|
         op.on('-g','--ghp-dir STR','the destination (GitHub Pages) directory to sync "doc/" to')
 
-        op.separator op.summary_indent
+        op.separator(op.summary_indent)
 
         op.on('-d','--deploy',"actually deploy (don't just do a dry-run)")
-        op.on('-s','--sync-args STR','additional args to pass to the sync command') do |sync_args|
+        op.on('-s','--sync-args STR','additional args to pass to the sync command') do |_sync_args|
           app.options[:sync_args] # Already processed above
         end
 
-        op.separator op.summary_indent
+        op.separator(op.summary_indent)
       end
     end
 
     def run
-      super()
+      super
 
       ghp_dir = app.options[:ghp_dir]
 

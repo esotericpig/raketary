@@ -34,9 +34,17 @@ Gem::Specification.new do |spec|
     %w[CHANGELOG.md LICENSE.txt README.md],
   ].flatten
 
-  spec.add_dependency 'irb'     ,'~> 1.15'  # For Raketeer::IRBTask.
-  spec.add_dependency 'rake'    ,'~> 13.3'  # For using the Rake tasks.
-  spec.add_dependency 'raketeer','~> 0.2'   # For the Rake tasks.
+  spec.add_dependency 'rake'      ,'~> 13.3' # For using the Rake tasks.
+
+  # For the general Rake tasks.
+  spec.add_dependency 'raketeer'  ,'~> 0.2'
+  spec.add_dependency 'irb'       ,'~> 1.15' # For Raketeer::IRBTask.
+
+  # For the YARDoc Rake tasks.
+  spec.add_dependency 'yard_ghurt','~> 1.2'
+  spec.add_dependency 'yard'      ,'~> 0.9'
+  spec.add_dependency 'rdoc'      ,'~> 6.14' # For YARDoc RDoc (*.rb).
+  spec.add_dependency 'redcarpet' ,'~> 3.6'  # For YARDoc Markdown (*.md).
 
   spec.post_install_message = "=> You can now use `#{spec.name}` on the command line."
 end

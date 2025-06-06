@@ -7,12 +7,8 @@ gemspec
 
 group :development,:test do
   gem 'bundler','~> 2.6'
-
-  # gem 'rdoc'     ,'~> 6.14'  # YARDoc RDoc (*.rb).
-  # gem 'redcarpet','~> 3.6'   # YARDoc Markdown (*.md).
-  # gem 'yard'     ,'~> 0.9'   # Doc.
 end
 
 group :test do
-  # gem 'minitest' ,'~> 5.25'
+  # gem 'minitest','~> 5.25'
 end
