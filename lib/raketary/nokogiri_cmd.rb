@@ -3,22 +3,16 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019-2021 Jonathan Bradley Whited
+# Copyright (c) 2019 Bradley Whited
 #
 # SPDX-License-Identifier: LGPL-3.0-or-later
 #++
-
 
 require 'raketary/cmd'
 require 'raketary/errors'
 require 'raketeer/nokogiri_install_tasks'
 
-
 module Raketary
-  ###
-  # @author Jonathan Bradley Whited
-  # @since  0.1.0
-  ###
   class NokogiriCmd < Cmd
     def initialize(*)
       super
@@ -38,12 +32,12 @@ module Raketary
           @main_opts += 1
           true
         end
-        op.separator op.summary_indent
+        op.separator(op.summary_indent)
       end
     end
 
     def run
-      super()
+      super
       return if @main_opts <= 0
 
       if @main_opts >= 2

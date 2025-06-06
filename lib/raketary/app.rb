@@ -3,11 +3,10 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019-2021 Jonathan Bradley Whited
+# Copyright (c) 2019 Bradley Whited
 #
 # SPDX-License-Identifier: LGPL-3.0-or-later
 #++
-
 
 require 'raketary/bump_cmd'
 require 'raketary/cmd'
@@ -19,12 +18,7 @@ require 'raketary/run_cmd'
 require 'raketary/sub_cmd'
 require 'raketary/version'
 
-
 module Raketary
-  ###
-  # @author Jonathan Bradley Whited
-  # @since  0.1.0
-  ###
   class App < Cmd
     attr_reader :args
     attr_reader :options
@@ -35,7 +29,7 @@ module Raketary
 
     alias_method :ran_cmd?,:ran_cmd
 
-    def initialize(args=ARGV)
+    def initialize(args = ARGV)
       super(self,'raketary')
 
       @args = args
@@ -51,7 +45,7 @@ module Raketary
         'github_pkg' => SubCmd.new("Publish your project's gem(s) to GitHub Packages",GitHubPkgCmd),
         'irb' => SubCmd.new('Open an irb session loaded with your library',IRBCmd),
         'nokogiri' => SubCmd.new('Install Nokogiri libs',NokogiriCmd),
-        'run' => SubCmd.new("Run your project's main file: #{@name} run -- --version",RunCmd)
+        'run' => SubCmd.new("Run your project's main file: #{@name} run -- --version",RunCmd),
       }
 
       parse!(true) do |op|

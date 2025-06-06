@@ -3,21 +3,15 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019-2021 Jonathan Bradley Whited
+# Copyright (c) 2019 Bradley Whited
 #
 # SPDX-License-Identifier: LGPL-3.0-or-later
 #++
 
-
 require 'raketary/cmd'
 require 'raketeer/bump_task'
 
-
 module Raketary
-  ###
-  # @author Jonathan Bradley Whited
-  # @since  0.1.0
-  ###
   class BumpCmd < Cmd
     def initialize(*)
       super
@@ -28,10 +22,10 @@ module Raketary
         op.on('-n','--dry-run','do a dry run (do NOT write to files)')
         op.on('-s','--strict','enforce semantic versioning (i.e., \\d+\\.\\d+\\.\\d+.*)')
 
-        op.separator op.summary_indent
+        op.separator(op.summary_indent)
 
-        op.on('-v','--ver [STR]',"show/set the version (e.g.: '1.2.3-alpha.4+beta.5')" \
-              ' (default: show)') do |ver|
+        op.on('-v','--ver [STR]',"show/set the version (e.g.: '1.2.3-alpha.4+beta.5') " \
+                                 '(default: show)') do |ver|
           @run_cmd = true
           ver
         end
@@ -47,13 +41,13 @@ module Raketary
           @run_cmd = true
           patch.nil? ? '+1' : patch
         end
-        op.on('-r','--pre [STR]',"set/erase the pre-release extension (e.g.: 'alpha.4')" \
-              ' (default: erase)') do |pre|
+        op.on('-r','--pre [STR]',"set/erase the pre-release extension (e.g.: 'alpha.4') " \
+                                 '(default: erase)') do |pre|
           @run_cmd = true
           pre.nil? ? '' : pre
         end
-        op.on('-b','--build [STR]',"set/erase the the build metadata (e.g.: 'beta.5')" \
-              ' (default: erase)') do |build|
+        op.on('-b','--build [STR]',"set/erase the the build metadata (e.g.: 'beta.5') " \
+                                   '(default: erase)') do |build|
           @run_cmd = true
           build.nil? ? '' : build
         end
@@ -62,7 +56,7 @@ module Raketary
           true
         end
 
-        op.separator op.summary_indent
+        op.separator(op.summary_indent)
 
         op.on_tail('-x','--example','show some examples') do
           puts <<~EXAMPLES
@@ -96,7 +90,7 @@ module Raketary
     end
 
     def run
-      super()
+      super
       return unless @run_cmd
 
       bump_task = Raketeer::BumpTask.new do |task|
@@ -113,7 +107,7 @@ module Raketary
         minor: app.options[:minor],
         patch: app.options[:patch],
         prerelease: app.options[:pre],
-        build_meta: app.options[:build]
+        build_meta: app.options[:build],
       ))
 
       bump_task.bump_bundle_file if app.options[:bundle]

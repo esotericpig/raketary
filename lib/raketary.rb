@@ -3,15 +3,16 @@
 
 #--
 # This file is part of Raketary.
-# Copyright (c) 2019-2021 Jonathan Bradley Whited
+# Copyright (c) 2019 Bradley Whited
 #
 # SPDX-License-Identifier: LGPL-3.0-or-later
 #++
 
+module Raketary
+  IS_TEST = ($PROGRAM_NAME == __FILE__)
+end
 
-TESTING_RAKETARY = ($PROGRAM_NAME == __FILE__)
-
-if TESTING_RAKETARY
+if Raketary::IS_TEST
   require 'rubygems'
   require 'bundler/setup'
 end
@@ -28,12 +29,7 @@ require 'raketary/run_cmd'
 require 'raketary/sub_cmd'
 require 'raketary/version'
 
-
-###
-# @author Jonathan Bradley Whited
-# @since  0.1.0
-###
 module Raketary
 end
 
-Raketary::App.new.run if TESTING_RAKETARY
+Raketary::App.new.run if Raketary::IS_TEST
