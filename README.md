@@ -1,10 +1,9 @@
 # Raketary
 
 [![Gem Version](https://badge.fury.io/rb/raketary.svg)](https://badge.fury.io/rb/raketary)
-
-[![Source Code](https://img.shields.io/badge/source-github-%23A0522D.svg?style=for-the-badge)](https://github.com/esotericpig/raketary)
-[![Changelog](https://img.shields.io/badge/changelog-md-%23A0522D.svg?style=for-the-badge)](CHANGELOG.md)
-[![License](https://img.shields.io/github/license/esotericpig/raketary.svg?color=%23A0522D&style=for-the-badge)](LICENSE.txt)
+[![Source Code](https://img.shields.io/badge/source-github-%23211F1F.svg)](https://github.com/esotericpig/raketary)
+[![Changelog](https://img.shields.io/badge/changelog-md-%23A0522D.svg)](CHANGELOG.md)
+[![License](https://img.shields.io/github/license/esotericpig/raketary.svg)](LICENSE.txt)
 
 CLI app for commonly-used Rake tasks.
 
@@ -13,35 +12,40 @@ Includes:
 - [Raketeer](https://github.com/esotericpig/raketeer)
 - [YardGhurt](https://github.com/esotericpig/yard_ghurt)
 
-![Demo of Raketary on the command line](https://github.com/esotericpig/esotericpig.github.io/blob/master/pics/raketary_demo.gif)
+![Demo of Raketary on the command line](https://github.com/esotericpig/esotericpig.github.io/blob/main/pics/raketary_demo.gif?raw=true)
 
-## Contents
+## // Contents
 
-- [Installing](#installing)
-- [Using](#using)
-- [Hacking](#hacking)
-- [License](#license)
+- [Installing](#-installing)
+- [Using](#-using)
+  - [Bump](#-bump)
+  - [GitHub Pkg](#-github-pkg)
+  - [GitHub Pages Sync](#-github-pages-sync)
+- [Hacking](#-hacking)
+- [License](#-license)
 
-## [Installing](#contents)
+## [//](#-contents) Installing
 
 Pick your poison...
 
 With the RubyGems CLI package manager:
 
-`$ gem install raketary`
-
-Manually:
-
-```
-$ git clone 'https://github.com/esotericpig/raketary.git'
-$ cd raketary
-$ bundle install
-$ bundle exec rake install:local
+```bash
+$ gem install raketary
 ```
 
-## [Using](#contents)
+From source:
 
+```bash
+git clone --depth 1 'https://github.com/esotericpig/raketary.git'
+cd raketary
+bundle install
+bundle exec rake install:local
 ```
+
+## [//](#-contents) Using
+
+```bash
 $ raketary
 Usage: raketary [options] [command] [options]...
 
@@ -58,9 +62,9 @@ Options:
     -v, --version                    show the version of raketary
 ```
 
-**Bump**
+### [//](#-contents) Bump
 
-```
+```bash
 $ raketary bump
 ...
 [bump] Options:
@@ -79,7 +83,7 @@ $ raketary bump
     -x, --example                    show some examples
 ```
 
-```
+```bash
 $ raketary bump -x
 raketary bump -v  # Show the current version
 raketary bump -n  # Do a dry run for any task (will NOT write to files)
@@ -106,9 +110,9 @@ raketary bump -b 'beta.5'   # Set the build metadata
 raketary bump -u            # Bump the Gemfile.lock version
 ```
 
-**GitHub Pkg**
+### [//](#-contents) GitHub Pkg
 
-```
+```bash
 $ raketary github_pkg -h
 ...
 [github_pkg] Options:
@@ -116,9 +120,9 @@ $ raketary github_pkg -h
     -h, --help                       show this help
 ```
 
-**GitHub Pages Sync**
+### [//](#-contents) GitHub Pages Sync
 
-```
+```bash
 $ raketary ghp_sync -h
 ...
 [ghp_sync] Options:
@@ -130,21 +134,21 @@ $ raketary ghp_sync -h
     -h, --help                       show this help
 ```
 
-## [Hacking](#contents)
+## [//](#-contents) Hacking
 
-```
+```bash
 $ git clone 'https://github.com/esotericpig/raketary.git'
 $ cd raketary
 $ bundle install
 $ bundle exec rake -T
 ```
 
-## [License](#contents)
+## [//](#-contents) License
 
 [GNU LGPL v3+](LICENSE.txt)
 
 > Raketary (<https://github.com/esotericpig/raketary>)  
-> Copyright (c) 2019-2021 Jonathan Bradley Whited  
+> Copyright (c) 2019-2025 Bradley Whited  
 > 
 > Raketary is free software: you can redistribute it and/or modify  
 > it under the terms of the GNU Lesser General Public License as published by  

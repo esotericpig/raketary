@@ -1,17 +1,12 @@
 # encoding: UTF-8
 # frozen_string_literal: true
 
-
-lib = File.expand_path(File.join('..','lib'),__FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-
-require 'raketary/version'
-
+require_relative 'lib/raketary/version'
 
 Gem::Specification.new do |spec|
   spec.name        = 'raketary'
   spec.version     = Raketary::VERSION
-  spec.authors     = ['Jonathan Bradley Whited']
+  spec.authors     = ['Bradley Whited']
   spec.email       = ['code@esotericpig.com']
   spec.licenses    = ['LGPL-3.0-or-later']
   spec.homepage    = 'https://github.com/esotericpig/raketary'
@@ -19,31 +14,29 @@ Gem::Specification.new do |spec|
   spec.description = spec.summary
 
   spec.metadata = {
-    'bug_tracker_uri' => 'https://github.com/esotericpig/raketary/issues',
-    'changelog_uri'   => 'https://github.com/esotericpig/raketary/blob/master/CHANGELOG.md',
-    'homepage_uri'    => 'https://github.com/esotericpig/raketary',
-    'source_code_uri' => 'https://github.com/esotericpig/raketary'
+    'rubygems_mfa_required' => 'true',
+    'homepage_uri'          => spec.homepage,
+    'changelog_uri'         => 'https://github.com/esotericpig/raketary/blob/main/CHANGELOG.md',
+    'source_code_uri'       => 'https://github.com/esotericpig/raketary',
+    'bug_tracker_uri'       => 'https://github.com/esotericpig/raketary/issues',
   }
 
-  spec.require_paths = ['lib']
-  spec.bindir        = 'bin'
-  spec.executables   = [spec.name]
-
-  spec.files = Dir.glob(File.join("{#{spec.require_paths.join(',')}}",'**','*.{erb,rb}')) +
-               Dir.glob(File.join(spec.bindir,'*')) +
-               Dir.glob(File.join('{test,yard}','**','*.{erb,rb}')) +
-               %W[ Gemfile Gemfile.lock #{spec.name}.gemspec Rakefile ] +
-               %w[ CHANGELOG.md LICENSE.txt README.md ]
-
   spec.required_ruby_version = '>= 2.4'
+  spec.require_paths         = ['lib']
+  spec.bindir                = 'bin'
+  spec.executables           = [spec.name]
 
-  spec.add_runtime_dependency 'irb'       ,'~> 1.14' # For Raketeer::IRBTask
-  spec.add_runtime_dependency 'rake'      ,'~> 13.2' # For using custom Rake tasks
-  spec.add_runtime_dependency 'raketeer'  ,'~> 0.2'  # For general Rake tasks
-  spec.add_runtime_dependency 'yard_ghurt','~> 1.2'  # For YARDoc Rake tasks
+  spec.files = [
+    Dir.glob("{#{spec.require_paths.join(',')}}/**/*.{erb,rb}"),
+    Dir.glob("#{spec.bindir}/*"),
+    Dir.glob('{spec,test,yard}/**/*.{erb,rb}'),
+    %W[Gemfile Gemfile.lock #{spec.name}.gemspec Rakefile],
+    %w[CHANGELOG.md LICENSE.txt README.md],
+  ].flatten
 
-  spec.add_development_dependency 'bundler','~> 2.5'
-  spec.add_development_dependency 'yard'   ,'~> 0.9' # For documentation
+  spec.add_dependency 'irb'     ,'~> 1.15'  # For Raketeer::IRBTask.
+  spec.add_dependency 'rake'    ,'~> 13.3'  # For using the Rake tasks.
+  spec.add_dependency 'raketeer','~> 0.2'   # For the Rake tasks.
 
-  spec.post_install_message = "You can now use [#{spec.executables.join(', ')}] on the command line."
+  spec.post_install_message = "=> You can now use `#{spec.name}` on the command line."
 end
