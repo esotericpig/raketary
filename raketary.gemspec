@@ -43,8 +43,6 @@ Gem::Specification.new do |spec|
   # For the YARDoc Rake tasks.
   spec.add_dependency 'yard_ghurt','~> 1.2'
   spec.add_dependency 'yard'      ,'~> 0.9'
-  spec.add_dependency 'rdoc'      ,'~> 6.14' # For YARDoc RDoc (*.rb).
-  spec.add_dependency 'redcarpet' ,'~> 3.6'  # For YARDoc Markdown (*.md).
 
   spec.post_install_message = "=> You can now use `#{spec.name}` on the command line."
 end
