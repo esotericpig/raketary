@@ -9,5 +9,5 @@ require 'raketeer/run'
 
 task default: [:run]
 
-CLEAN.exclude('.git/','.github/','.idea/','stock/')
+CLEAN.exclude('{.git,.github,.idea,stock}/**/*')
 CLOBBER.include('doc/')
